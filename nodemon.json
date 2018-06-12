@@ -1,0 +1,7 @@
+{
+    "ext": "ts,tsx",
+    "execMap": {
+        "ts": "ts-node",
+        "tsx": "ts-node"
+    }
+}
