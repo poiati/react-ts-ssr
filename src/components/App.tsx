@@ -7,19 +7,19 @@ interface AppState {
 }
 
 class App extends React.Component<AppProps, AppState> {
-    constructor(props: AppProps) {
+    constructor(props: never) {
         super(props)
         this.state = {
-            color: "blue"
+            color: "blue",
         }
         this.handleClick = this.handleClick.bind(this)
     }
 
-    handleClick() {
+    public handleClick() {
         this.setState({ color: "red" })
     }
 
-    render() {
+    public render() {
         return (
             <h1 onClick={this.handleClick} style={{ color: this.state.color }} >Hi There, SSR OMG!</h1>
         )

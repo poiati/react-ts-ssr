@@ -5,5 +5,5 @@ import App from "./components/App"
 
 ReactDOM.hydrate(
     <App />,
-    document.getElementById("app")
+    document.getElementById("app"),
 )

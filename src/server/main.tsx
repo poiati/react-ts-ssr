@@ -10,7 +10,7 @@ import App from "../components/App"
 
 const compiler = webpack(webpackConfig)
 
-const port = process.env.port || 9090 
+const port = process.env.port || 9090
 const app = express()
 
 app.set("views", path.join(__dirname, "views"))
@@ -21,7 +21,9 @@ app.use(webPackDevMiddleware(compiler, {
 }))
 
 app.all("*", (req, res) => {
-    const staticApp = ReactDOMServer.renderToString(React.createElement(App))
+    const staticApp = ReactDOMServer.renderToString(
+        <App />,
+    )
     res.render("index", { app: staticApp })
 })
 
