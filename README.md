@@ -7,6 +7,7 @@
 - Styling
 - Production build
 - Dockerfile
+- Source Maps
 
 ## Scripts
 
