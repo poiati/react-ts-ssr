@@ -46,7 +46,6 @@ app.all("*", async (req, res) => {
     })
 
     if (currRoute) {
-        console.log("fetching data")
         await currRoute.fetchData(store.dispatch)
     }
 
