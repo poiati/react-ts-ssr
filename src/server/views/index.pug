@@ -6,5 +6,6 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title SSR
     body
-        div(id="app") !{app}
-        script(src="static/bundle.js", async)
+        div(id="app") !{staticApp}
+        script !{"window.__PRELOADED_STATE__ = " + JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+        script(src="static/bundle.js")

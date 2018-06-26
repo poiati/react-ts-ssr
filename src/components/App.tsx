@@ -1,6 +1,9 @@
 import React from "react"
 import { Route, Switch } from "react-router"
-import { Link } from "react-router-dom"
+import routes from "../routes"
+import Nav from "./Nav"
+
+import AsyncFetch from "../containers/AsyncFetch"
 
 interface AppProps {}
 
@@ -24,32 +27,23 @@ class App extends React.Component<AppProps, AppState> {
     public render() {
         return (
             <>
-                <h1 onClick={this.handleClick} style={{ color: this.state.color }} >React TS SSR</h1>
+                <h1 onClick={this.handleClick} style={{ color: this.state.color }}>React TS SSR</h1>
+
                 <div>
-                    <h2>Routes</h2>
-                    <ul>
-                        <li><Link to="/">/</Link></li>
-                        <li><Link to="/foo">/foo</Link></li>
-                    </ul>
-                </div>
-                <div>
+                    <Nav />
                     <h2>Content</h2>
                     <Switch>
-                        <Route
-                            exact
-                            path="/"
-                            render={() => (
-                                <p>This is the main content.</p>
-                            )}>
-                        </Route>
-
-                        <Route
-                            exact
-                            path="/foo"
-                            render={() => (
-                                <p>You are now at /foo.</p>
-                            )}>
-                        </Route>
+                        {routes.map((route) => (
+                            <Route
+                                key={route.path}
+                                path={route.path}
+                                exact={route.exact}
+                                render={() => {
+                                    const Comp = route.component
+                                    return <Comp fetchData={route.fetchData} />
+                                }}
+                            />
+                        ))}
                     </Switch>
                 </div>
             </>
