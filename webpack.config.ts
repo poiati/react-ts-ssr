@@ -7,7 +7,7 @@ const config: webpack.Configuration = {
     mode: "development",
     output: {
         filename: "bundle.js",
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "dist", "browser"),
         publicPath: "/static",
     },
 
@@ -19,6 +19,11 @@ const config: webpack.Configuration = {
 
     resolve: {
         extensions: [".js", ".jsx", ".ts", ".tsx"],
+    },
+
+    externals: {
+        "react": "React",
+        "react-dom": "ReactDOM",
     },
 }
 

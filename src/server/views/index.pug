@@ -4,8 +4,11 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        |!{styleTags}
         title SSR
     body
         div(id="app") !{staticApp}
+        script(crossorigin, src=`https://unpkg.com/react@16.4.0/umd/react.${scriptType}.js`)
+        script(crossorigin, src=`https://unpkg.com/react-dom@16.4.0/umd/react-dom.${scriptType}.js`)
         script !{"window.__PRELOADED_STATE__ = " + JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         script(src="static/bundle.js")
